@@ -1,3 +1,4 @@
+#!/bin/bash
 
 if [ -n "$DOTFILES_REPO" ]; then
     # grab the files from the remote instead of running project_init()

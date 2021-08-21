@@ -26,5 +26,5 @@ services:
 
 
 networks:
-  traefik-public:
+  traefik-public:my.domain
     external: true

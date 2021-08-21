@@ -26,5 +26,6 @@ RUN sudo chown -R coder:coder /home/coder/.local
 ENV PORT=8080
 
 # Use our custom entrypoint script first
-COPY entrypoint.sh /usr/bin/deploy-container-entrypoint.sh
-ENTRYPOINT ["/usr/bin/deploy-container-entrypoint.sh"]
+COPY entrypoint.sh /usr/bin/entrypoint.sh
+RUN chown coder /usr/bin/entrypoint.sh
+ENTRYPOINT ["/usr/bin/entrypoint.sh"]
