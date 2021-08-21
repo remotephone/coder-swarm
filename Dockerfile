@@ -27,5 +27,4 @@ ENV PORT=8080
 
 # Use our custom entrypoint script first
 COPY entrypoint.sh /usr/bin/entrypoint.sh
-RUN chown coder /usr/bin/entrypoint.sh
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
