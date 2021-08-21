@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  tiingobeat:
+    image: ghcr.io/remotephone/coder-swarm:latest
+    environment:
+    deploy:
+        restart_policy:
+            condition: any
+            max_attempts: 10
+            delay: 60s
+      labels:
+        - traefik.enable=true
+        - traefik.constraint-label=traefik-public
+        - traefik.http.routers.coder-http.rule=Host(`coder.my.domain`)
+        - traefik.http.routers.coder-http.entrypoints=http
+        - traefik.http.routers.coder-http.middlewares=https-redirect
+        - traefik.http.routers.coder-https.rule=Host(`coder.my.domain`)
+        - traefik.http.routers.coder-https.entrypoints=https
+        - traefik.http.routers.coder-https.tls=true
+        - traefik.http.routers.coder-https.tls.certresolver=le
+        - traefik.http.services.coder.loadbalancer.server.port=80
+      replicas: 1
+    networks:
+      - traefik-public
+
+
+networks:
+  traefik-public:
+    external: true
