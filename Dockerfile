@@ -60,4 +60,4 @@ RUN code-server --install-extension ms-python.python && code-server --install-ex
 # Port
 ENV PORT=8080
 
-ENTRYPOINT ["/usr/bin/entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/entrypoint.sh", "--bind-addr", "0.0.0.0:8080"]

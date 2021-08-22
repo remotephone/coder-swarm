@@ -5,10 +5,6 @@ services:
     image: ghcr.io/remotephone/coder-swarm:latest
     environment:
     deploy:
-        restart_policy:
-            condition: any
-            max_attempts: 10
-            delay: 60s
       labels:
         - traefik.enable=true
         - traefik.constraint-label=traefik-public
